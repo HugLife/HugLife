@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/drinkd');
-  
+
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -13,7 +13,7 @@ db.once('open', function() {
 
 var UsersSchema = mongoose.Schema({
   username: String,
-  usertype: String
+  usertype: String,
   description: String
 });
 
