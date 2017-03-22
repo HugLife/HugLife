@@ -62,8 +62,9 @@ class App extends Component {
         var service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: pos,
-          radius: 500,
-          type: ['bar'],
+          types: ['bar'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+
 
         }, function(results, status, pagination) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
