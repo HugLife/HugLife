@@ -8,7 +8,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-
+app.post('/')
 app.get('/barlist', function (req, res) {
   db.selectThreeBars(function (error, result) {
   	if (error) {
@@ -20,7 +20,7 @@ app.get('/barlist', function (req, res) {
 });
 
 app.get('/bar', function (req, res) {
-  db.selectOneBar(1, function (error, result) {
+  db.selectOneBar(2, function (error, result) {
   	if (error) {
   	  console.log('errored out /bar', error);
   	}
