@@ -3,7 +3,10 @@ import $ from 'jquery';
 
 const divStyle = {
   display: 'inline-block',
-  float: 'right'
+  float: 'right',
+  height: '400px',
+  width: '400px',
+  border: 'solid Black px'
 };
 
 class App extends Component {
@@ -37,18 +40,82 @@ class App extends Component {
     })
   }
 
+  searchMap (location) {
+    
+  }
+
+  componentDidMount() { 
+
+    var context = this;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+   
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: pos,
+          zoom: 17
+        });
+
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pos,
+          types: ['bar'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+
+
+        }, function(results, status, pagination) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              console.log('error')
+              return
+            } else {
+
+            function addMarker(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location,
+              label: '' + (i + 1)
+            });
+            }
+              console.log(results);
+              context.setState({
+                bars: results
+              });
+
+              for (var i = 0; i < results.length; i++){
+                addMarker(results[i]);
+              }
+
+            }
+        })
+
+
+ 
+      })
+    } else {
+      // do nothing
+    }
+
+
+  }
   render() {
 
     return (
       <div>
         <div>
-        <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-        <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
+          <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
+          <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
         </div>
         <div>
-        <img src={'map.jpg'} style={divStyle} id="map" />
-        <h4>Bar List</h4>
-        {this.state.bars.map(bar => <li key={bar.key}>{bar.name}</li>)}
+          <img src={'map.jpg'} style={divStyle}/>
+          <h4>Bar List</h4>
+          <ol>
+            {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
+          </ol>
+          </div>
+        <div style={divStyle} id="map">
         </div>
       </div>
     )
