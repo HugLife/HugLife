@@ -6,7 +6,16 @@ const divStyle = {
   float: 'right',
   height: '400px',
   width: '400px',
-  border: 'solid Black px'
+  border: 'solid Black 2px'
+};
+const mapStyle = {
+  height: '400px',
+  width: '400px',
+  border: 'solid Black 2px',
+  backgroundImage: 'url(./loading-map.gif)',
+  backgroundSize: '100%',
+  backgroundPosition: 'center'
+
 };
 
 class App extends Component {
@@ -69,7 +78,7 @@ class App extends Component {
         }, function(results, status, pagination) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               console.log('error')
-              return
+              return;
             } else {
 
             function addMarker(place) {
@@ -89,13 +98,12 @@ class App extends Component {
               }
 
             }
-        })
-
-
- 
+        }) 
+      }, function(){
+        alert('Check your stuff brah!')
       })
     } else {
-      // do nothing
+     
     }
 
 
@@ -109,13 +117,12 @@ class App extends Component {
           <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
         </div>
         <div>
-          <img src={'map.jpg'} style={divStyle}/>
           <h4>Bar List</h4>
           <ol>
             {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
           </ol>
           </div>
-        <div style={divStyle} id="map">
+        <div style={mapStyle} id="map">
         </div>
       </div>
     )
