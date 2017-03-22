@@ -47,6 +47,10 @@ var selectAllBartendersFromBar = function (barid, callback) {
   });
 };
 
+/*var insertBarIntoDB = function (bar, callback) {
+  
+}*/
+
 module.exports.selectThreeBars = selectThreeBars;
 module.exports.selectOneBar = selectOneBar;
 module.exports.selectOneBartender = selectOneBartender;
