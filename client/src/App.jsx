@@ -71,18 +71,13 @@ class App extends Component {
               return
             } else {
 
-
             function addMarker(place) {
               var marker = new google.maps.Marker({
               map: map,
               position: place.geometry.location,
-              icon: {
-                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(10,17)
-              }
+              label: '' + (i + 1)
             });
-    }
+            }
               console.log(results);
               context.setState({
                 bars: results
