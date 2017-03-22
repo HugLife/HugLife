@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   componentDidMount() { 
+
     var context = this;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -69,9 +70,27 @@ class App extends Component {
               console.log('error')
               return
             } else {
+
+
+            function addMarker(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location,
+              icon: {
+                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(10,17)
+              }
+            });
+    }
+              console.log(results);
               context.setState({
                 bars: results
               });
+
+              for (var i = 0; i < results.length; i++){
+                addMarker(results[i]);
+              }
 
             }
         })
@@ -96,7 +115,7 @@ class App extends Component {
         <div>
           <img src={'map.jpg'} style={divStyle}/>
           <h4>Bar List</h4>
-          {this.state.bars.map(bar => <li key={bar.key}>{bar.name}</li>)}
+          {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
           </div>
         <div style={divStyle} id="map">
         </div>
