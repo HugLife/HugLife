@@ -111,7 +111,9 @@ class App extends Component {
         <div>
           <img src={'map.jpg'} style={divStyle}/>
           <h4>Bar List</h4>
-          {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
+          <ol>
+            {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
+          </ol>
           </div>
         <div style={divStyle} id="map">
         </div>
