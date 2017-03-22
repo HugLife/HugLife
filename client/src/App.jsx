@@ -3,7 +3,10 @@ import $ from 'jquery';
 
 const divStyle = {
   display: 'inline-block',
-  float: 'right'
+  float: 'right',
+  height: '400px',
+  width: '400px',
+  border: 'solid Black px'
 };
 
 class App extends Component {
@@ -42,49 +45,42 @@ class App extends Component {
   }
 
   componentDidMount() { 
+    var context = this;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
+   
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: pos,
+          zoom: 17
+        });
 
-      var $img = $('img');
-      var url = 'https://maps.googleapis.com/maps/api/staticmap?' +
-                'key=AIzaSyBSJt0j19FiHBC4ExMsKCh7b7kujSNYImo' +
-                '&center=' + pos.lat + ',' + pos.lng + '&zoom=15' +
-                '&size=480x293';
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pos,
+          radius: 500,
+          type: ['bar'],
 
-      $img.attr('src', url);
+        }, function(results, status, pagination) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              console.log('error')
+              return
+            } else {
+              context.setState({
+                bars: results
+              });
 
-
+            }
+        })
 
 
 
       })
     } else {
-          // $.ajax({
-    //   url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?',
-    //   data:{
-    //     key: 'AIzaSyDPnksoq1GqbY-SoDONZTHyj54ovde-2k8',
-    //     location: '37.7876,-122.4001',
-    //     radius: '500',
-    //     type: 'bar',
-    //     keyword: ''
-    //   },
-    //   contentType: 'jsonp',
-    //   beforeSend: function (request) {
-    //     request.setRequestHeader('Access-Control-Allow-Origin', '*');
-
-    //   },
-    //   success: function(data) {
-    //     console.log(data);
-    //   },
-    //   error: function(error) {
-    //     console.log(error);
-    //   }
-
-    // })
+      // do nothing
     }
 
 
@@ -102,7 +98,7 @@ class App extends Component {
           <h4>Bar List</h4>
           {this.state.bars.map(bar => <li key={bar.key}>{bar.name}</li>)}
           </div>
-        <div id="map">
+        <div style={divStyle} id="map">
         </div>
       </div>
     )
