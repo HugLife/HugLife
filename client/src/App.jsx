@@ -24,7 +24,7 @@ class App extends Component {
     this.state = {
       page: 'home',
       value: 'Enter Bar',
-      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}]
+      bars: [{name: 'Tempest', key: 1}]
     }
   }
 
@@ -34,14 +34,16 @@ class App extends Component {
     });
   }
 
-  handleSubmit(value) {
-    console.log(value);
+  handleSubmit() {
     $.ajax({
-      url: '/bars',
-      type: 'POST',
-      data: value,
+      url: '/bar',
+      type: 'GET',
+      data: this.state.value,
       success: function (data) {
-          console.log("this was a success.")
+          console.log(data);
+          this.setState ({
+            bars: data
+          });
       },
       error: function () {
         console.log("we got a bug")
@@ -172,7 +174,7 @@ class App extends Component {
       <div>
         <div>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-          <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
+          <button onClick={this.handleSubmit.bind(this)}>Find Bar</button> 
         </div>
         <div>
           <h4>Bar List</h4>
