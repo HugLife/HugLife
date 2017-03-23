@@ -190,7 +190,10 @@ class App extends Component {
       return (
       <div>
       <div>
-      <h3>{this.state.barone.name}</h3>
+      <h3>Bar Page</h3>
+      </div>
+      <div>
+      <h4>{this.state.barone.name}</h4>
       <p>{this.state.barone.vicinity}</p>
       </div>
       <button onClick={() => this.setState({barone: 'placeholder'})}>Home</button>
