@@ -49,7 +49,22 @@ app.get('/bartenderlist', function (req, res) {
 	})
 })
 
-
+app.post('/barlist', function (req, res) {
+  var body = '';
+  req.on('data', function (chunk) {
+    body += chunk;
+    var bars = JSON.parse(body);
+    bars.forEach(function (bar) {
+      db.insertBarIntoDB(bar, function(error, result) {
+        if (error) {
+          console.log('Errored out from posting bartenderlist into database', error)
+        }
+        console.log('posted the bar to the database succesfully')
+      })
+    })
+  })
+  res.send();
+})
 app.listen(5000, function() {
   console.log('listening on port 5000!');
 });
