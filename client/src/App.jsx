@@ -88,14 +88,27 @@ class App extends Component {
               label: '' + (i + 1)
             });
             }
+
+            function addHome(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place,
+              label: {text: 'X', labelColor: 'green'}
+
+            });
+            }
               console.log(results);
               context.setState({
                 bars: results
               });
 
+              
+
               for (var i = 0; i < results.length; i++){
                 addMarker(results[i]);
               }
+
+              addHome(pos);
 
             }
         }) 
@@ -123,6 +136,15 @@ class App extends Component {
               map: map,
               position: place.geometry.location,
               label: '' + (i + 1)
+            });
+            }
+
+            function addHome(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location,
+              label: 'X',
+              labelColor: 'green'
             });
             }
               console.log(results);
