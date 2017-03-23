@@ -8,7 +8,6 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-app.post('/')
 app.get('/barlist', function (req, res) {
   db.selectThreeBars(function (error, result) {
   	if (error) {
@@ -64,6 +63,32 @@ app.post('/barlist', function (req, res) {
     })
   })
   res.send();
+})
+
+app.post('/rate', function (req, res) {
+  var body = '';
+  req.on('data', function (chunk) {
+    body += chunk;
+    var rating = JSON.parse(body);
+
+    if (rating.side === 'right') {
+      db.increaseBartenderRating(rating.bartenderID, rating.aspect, function (error, results) {
+        if (error) {
+          console.log('errored out from rating serverside', error);
+        }
+        console.log('rated succesfully')
+        res.send();
+      })
+    } else {
+      db.decreaseBartenderRating(rating.bartenderID, rating.aspect, function (error, results) {
+        if (error) {
+          console.log('errored out from decreasing rating serverside', error);
+        }
+        console.log('decreased rating succesfully')
+        res.send();
+      })
+    }
+  })
 })
 app.listen(5000, function() {
   console.log('listening on port 5000!');
