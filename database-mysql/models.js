@@ -59,8 +59,8 @@ var insertBarIntoDB = function (bar, callback) {
   });
 };
 
-var increaseBartenderRating = function (bartender, aspect, callback) {
-  connection.query(`UPDATE bartenders SET '${aspect}' = '${aspect}' + 1 WHERE id = ${bartender.id}`, function (err, results, fields) {
+var increaseBartenderRating = function (bartenderID, aspect, callback) {
+  connection.query(`UPDATE bartenders SET ${aspect} = ${aspect} + 1 WHERE id = ${bartenderID}`, function (err, results, fields) {
     if (err) {
       console.log('errored out from increasing some aspect of the bartender')
       callback(err, null);
@@ -71,7 +71,7 @@ var increaseBartenderRating = function (bartender, aspect, callback) {
 };
 
 var decreaseBartenderRating = function (bartenderID, aspect, callback) {
-  connection.query(`UPDATE bartenders SET '${aspect}' = '${aspect}' - 1 WHERE id = ${bartenderID}`, function (err, results, fields) {
+  connection.query(`UPDATE bartenders SET ${aspect} = ${aspect} + 1 WHERE id = ${bartenderID}`, function (err, results, fields) {
     if (err) {
       console.log('errored out from decreasing some aspect of the bartender')
       callback(err, null);
