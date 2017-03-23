@@ -56,11 +56,35 @@ var insertBarIntoDB = function (bar, callback) {
     } else {
       callback(null, results);
     }
-  })
-}
+  });
+};
+
+var increaseBartenderRating = function (bartender, aspect, callback) {
+  connection.query(`UPDATE bartenders SET '${aspect}' = '${aspect}' + 1 WHERE id = ${bartender.id}`, function (err, results, fields) {
+    if (err) {
+      console.log('errored out from increasing some aspect of the bartender')
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+var decreaseBartenderRating = function (bartenderID, aspect, callback) {
+  connection.query(`UPDATE bartenders SET '${aspect}' = '${aspect}' - 1 WHERE id = ${bartenderID}`, function (err, results, fields) {
+    if (err) {
+      console.log('errored out from decreasing some aspect of the bartender')
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
 
 module.exports.selectThreeBars = selectThreeBars;
 module.exports.selectOneBar = selectOneBar;
 module.exports.selectOneBartender = selectOneBartender;
 module.exports.selectAllBartendersFromBar = selectAllBartendersFromBar;
 module.exports.insertBarIntoDB = insertBarIntoDB;
+module.exports.increaseBartenderRating = increaseBartenderRating;
+module.exports.decreaseBartenderRating = decreaseBartenderRating;
