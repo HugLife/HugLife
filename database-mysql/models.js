@@ -14,6 +14,7 @@ var selectThreeBars = function(callback) {
   });
 };
 
+
 var selectOneBar = function (id, callback) {
   connection.query(`SELECT * FROM bars WHERE bars.id = '${id}'`, function (err, results, fields) {
   	if (err) {
@@ -46,6 +47,10 @@ var selectAllBartendersFromBar = function (barid, callback) {
   	}
   });
 };
+
+/*var insertBarIntoDB = function (bar, callback) {
+  
+}*/
 
 module.exports.selectThreeBars = selectThreeBars;
 module.exports.selectOneBar = selectOneBar;
