@@ -70,7 +70,6 @@ app.post('/rate', function (req, res) {
   req.on('data', function (chunk) {
     body += chunk;
     var rating = JSON.parse(body);
-
     if (rating.side === 'right') {
       db.increaseBartenderRating(rating.bartenderID, rating.aspect, function (error, results) {
         if (error) {
