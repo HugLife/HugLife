@@ -14,6 +14,7 @@ var selectThreeBars = function(callback) {
   });
 };
 
+
 var selectOneBar = function (id, callback) {
   connection.query(`SELECT * FROM bars WHERE bars.id = '${id}'`, function (err, results, fields) {
   	if (err) {
