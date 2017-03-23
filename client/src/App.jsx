@@ -189,14 +189,14 @@ class App extends Component {
     } else {
       return (
       <div>
-      <div>
-      <h3>Bar Page</h3>
-      </div>
-      <div>
-      <h4>{this.state.barone.name}</h4>
-      <p>{this.state.barone.vicinity}</p>
-      </div>
-      <button onClick={() => this.setState({barone: 'placeholder'})}>Home</button>
+        <div>
+          <h3>Bar Page</h3>
+        </div>
+        <div>
+          <h4>{this.state.barone.name}</h4>
+          <p>{this.state.barone.vicinity}</p>
+        </div>
+        <button onClick={() => this.setState({barone: 'placeholder'})}>Home</button>
       </div>
       )
     }
