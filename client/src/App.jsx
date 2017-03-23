@@ -100,10 +100,46 @@ class App extends Component {
             }
         }) 
       }, function(){
-        alert('Check your stuff brah!')
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.7876, lng: -122.4001},
+          zoom: 17
+        });
+
+         var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: {lat: 37.7876, lng: -122.4001},
+          types: ['bar'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+
+
+        }, function(results, status, pagination) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              console.log('error')
+              return;
+            } else {
+
+            function addMarker(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location,
+              label: '' + (i + 1)
+            });
+            }
+              console.log(results);
+              context.setState({
+                bars: results
+              });
+
+              for (var i = 0; i < results.length; i++){
+                addMarker(results[i]);
+              }
+
+            }
+        }) 
+        alert('GEOLOCATION ACCESS DENIED: LOCATION DEFAULTED TO HACK REACTOR SF');
       })
     } else {
-     
+      // do nothing
     }
 
 
