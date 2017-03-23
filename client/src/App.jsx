@@ -24,7 +24,8 @@ class App extends Component {
     this.state = {
       page: 'home',
       value: 'Enter Bar',
-      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}]
+      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}],
+      barone: 'placeholder'
     }
   }
 
@@ -52,7 +53,6 @@ class App extends Component {
   }
 
   searchMap (location) {
-    
   }
 
   componentDidMount() { 
@@ -169,8 +169,8 @@ class App extends Component {
 
   }
   render() {
-
-    return (
+    if (this.state.barone === 'placeholder') {
+      return (
       <div>
         <div>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
@@ -179,13 +179,24 @@ class App extends Component {
         <div>
           <h4>Bar List</h4>
           <ol>
-            {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
+            {this.state.bars.map(bar => <li key={bar.id} onClick={() => this.setState({barone: bar})}>{bar.name}</li>)}
           </ol>
           </div>
         <div style={mapStyle} id="map">
         </div>
       </div>
     )
+    } else {
+      return (
+      <div>
+      <div>
+      <h3>{this.state.barone.name}</h3>
+      <p>{this.state.barone.vicinity}</p>
+      </div>
+      <button onClick={() => this.setState({barone: 'placeholder'})}>Home</button>
+      </div>
+      )
+    }
   }
 }
 
