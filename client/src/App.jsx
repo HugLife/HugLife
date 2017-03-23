@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import BarPage from './components/BarPage.jsx'
 
 const divStyle = {
   display: 'inline-block',
@@ -189,13 +190,7 @@ class App extends Component {
     } else {
       return (
       <div>
-        <div>
-          <h3>Bar Page</h3>
-        </div>
-        <div>
-          <h4>{this.state.barone.name}</h4>
-          <p>{this.state.barone.vicinity}</p>
-        </div>
+        <BarPage bar={this.state.barone} />
         <button onClick={() => this.setState({barone: 'placeholder'})}>Home</button>
       </div>
       )
