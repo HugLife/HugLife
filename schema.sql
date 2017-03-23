@@ -5,14 +5,14 @@ CREATE DATABASE drinkedin;
 USE drinkedin;
 
 CREATE TABLE bars (
-  id int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL UNIQUE,
   name varchar(50) NOT NULL,
   address varchar(200) NOT NULL,
   PRIMARY KEY (ID)
 );
 
  CREATE TABLE bartenders (
- 	id int NOT NULL AUTO_INCREMENT,
+ 	id int NOT NULL AUTO_INCREMENT UNIQUE,
  	name varchar(200) NOT NULL,
  	bar_id int NOT NULL,
  	expert_right int,
