@@ -24,7 +24,7 @@ class App extends Component {
     this.state = {
       page: 'home',
       value: 'Enter Bar',
-      bars: [{name: 'Tempest', key: 1}]
+      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}]
     }
   }
 
