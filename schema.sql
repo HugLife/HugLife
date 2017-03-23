@@ -8,10 +8,6 @@ CREATE TABLE bars (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(50) NOT NULL,
   address varchar(200) NOT NULL,
-  img_url varchar(200) NULL,
-  hours varchar (200) NOT NULL,
-  description varchar(200) NOT NULL,
-  phonenumber varchar(15) NOT NULL,
   PRIMARY KEY (ID)
 );
 
@@ -28,9 +24,6 @@ CREATE TABLE bars (
  	PRIMARY KEY (ID)
  	);
 
-  INSERT INTO bars (id, name, address, hours, description, phonenumber) VALUES (1, 'Tempest', '431 Natoma St', '11:00 am - 2:00 am', 'Nice bar on Natoma St', '555-555-5555'),
-  (2, 'Databases', '934 Howard St', '11:00 am - 2:00 am', 'A place to be yourself', '444-444-4444'),
-  (3, 'Mikeller', '34 Mason St', '11:00 am - 2:00 am', 'Hack Reactors students are our source of income', '333-333-3333');
 
 
   INSERT INTO bartenders (name, bar_id, expert_right, expert_left, friendly_right, friendly_left, quick_right, quick_left) VALUES ('Datum Bass', 2, 10, 5, 8, 4, 9, 1),
