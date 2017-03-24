@@ -10,49 +10,65 @@ class RateBartender extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bartender: {
-        name: 'Esteban Quito'
-      },
-      user: {
-        username: 'TEST'
-      },
-      metrics: {
-
-      }
+      // note Maybe break up into separate objects
+      bartender: 'Esteban Quito',
+      reviewer: 'TEST',
+      expert_right: 0,
+      expert_left: 0,
+      friendly_right: 0,
+      friendly_left: 0,
+      quick_right: 0,
+      quick_left: 0,
+      hot: false,
+      hook: false,
     }
   }
 
   submitRating() {
+    var context = this;
     $('#rater').hide();
     $('#ratingconf').show();
     $('#ratebutton').show();
+
+    console.log(context.state);
     
   }
 
-
+  selectMetric(selected, zero) {
+    // set selected as 1
+    // set zero as zero
+  }
 
   componentDidMount() { 
     
   }
 
-  render() {
+  displayStatus(right, left) {
+    // if right !left 
+      // return right
+    // else left ! right 
+      // return left
+    // else 
+      //return neither selected
+    
+  }
 
+  render() {
+    // TODO figure out a way to display currently selected thing (possible Radio buttons)
     return (
       <div style={raterStyle} id="rater">
         <h4>How would you rate {this.state.bartender.name}?</h4>
-        <h6>Expertise</h6>
-        <button>BOO</button>-----<button>OKAY</button>-----<button>AWESOME</button>
-        <h6>Friendliness</h6>
-        <button>BOO</button>-----<button>OKAY</button>-----<button>AWESOME</button>
-        <h6>Speed</h6>
-        <button>BOO</button>-----<button>OKAY</button>-----<button>AWESOME</button>
+
+        <button>BOO</button>-----EXPERTISE-----<button>AWESOME</button><br />
+        
+        <button>BOO</button>-----FRIENDLINESS-----<button>AWESOME</button><br />
+        
+        <button>BOO</button>-----SPEED-----<button>AWESOME</button><br />
 
         <h5>Click Below To Sumbit</h5>
-        <button onClick={this.submitRating}>Submit Rating</button>
+        <button onClick={this.submitRating.bind(this)}>Submit Rating</button>
       </div>
 
-
-      
     )
   }
 }
