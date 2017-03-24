@@ -11,19 +11,14 @@ class RateBartender extends Component {
     super(props)
     this.state = {
       bartender: {
-        name: 'Esteban Quito',
-        bar_id: 1,
-        expert_right: 15,
-        expert_left: 3,
-        friendly_right: 2,
-        friendly_left: 17,
-        quick_right: 2,
-        quick_left: 7,
-        hot: true,
-        hook: true,
-        message: 'Come See Me at the Bar Tonight, I\'ll get you Drunk!'
+        name: 'Esteban Quito'
       },
-      review: {}
+      user: {
+        username: 'TEST'
+      }
+      metrics: {
+        
+      }
     }
   }
 
