@@ -15,16 +15,18 @@ class RateBartender extends Component {
       },
       user: {
         username: 'TEST'
-      }
+      },
       metrics: {
-        
+
       }
     }
   }
 
   submitRating() {
     $('#rater').hide();
- 
+    $('#ratingconf').show();
+    $('#ratebutton').show();
+    
   }
 
 

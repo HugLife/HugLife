@@ -58,6 +58,7 @@ class BartenderProfile extends Component {
   openRater() {
     $('#ratebutton').hide();
     $('#rater').show();
+    $('#ratingconf').hide();
   }
 
 
@@ -83,6 +84,7 @@ class BartenderProfile extends Component {
           <p>{this.state.bartender.message}</p>
         </div>
         <button id="ratebutton" onClick={this.openRater}>CLICK TO RATE</button>
+        <h4 id="ratingconf">Thanks for rating!</h4>
         <RateBartender />
         <Legend/ >
         <h3>Reviews</h3>

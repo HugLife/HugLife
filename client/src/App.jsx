@@ -31,6 +31,8 @@ class App extends Component {
 
   componentDidMount() { 
 
+    $('#rater').hide();
+    $('#ratingconf').hide();
 
   }
 
