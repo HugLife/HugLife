@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import BartenderListItem from './BartenderListItem.jsx';
 
 
 class BarProfile extends Component {
@@ -45,7 +46,11 @@ class BarProfile extends Component {
   }
 
   componentDidMount() { 
+    if (this.state.bartenders.length === 0){
+      var $bartenders = $('#bartenders');
 
+      $bartenders.innerhtml = '<p>THERE ARE NO BARTENDERS REGISTERED WITH THIS BAR</p>';
+    }
   }
   render() {
 
@@ -58,10 +63,9 @@ class BarProfile extends Component {
           <p><strong>Price:</strong> {this.renderPrice(this.state.bar.price_level)}</p>
           <p><strong>Google Rating:</strong> {this.renderStars(this.state.bar.rating)}</p>
         </div>
-
         <h2>Our Bartenders</h2>
         <div id="bartenders">
-        <p>ADD INDIVIDUAL BARTENDER DIVS HERE</p>
+          <BartenderListItem />
         </div>
       </div>
 
