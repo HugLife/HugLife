@@ -29,7 +29,7 @@ class BartenderProfile extends Component {
 
   calcMetric(left, right, emoji) {
     var total = left + right;
-    var ratio = Math.ceil(right / total) * 5;
+    var ratio = Math.ceil((right / total) * 5);
     var rating = '';
 
     for (var i = 1; i <= ratio; i++) {
@@ -52,19 +52,22 @@ class BartenderProfile extends Component {
         <Header />
         <h1>{this.state.bartender.name}</h1>
         <div id="bartenderinfo">
-          <p><strong>Expertise:</strong> {this.renderOpen(this.state.bar.opening_hours.open_now)}</p>
-          <p><strong>Friendliness:</strong> {this.state.bar.vicinity}</p>
-          <p><strong>Speed:</strong> {this.renderPrice(this.state.bar.price_level)}</p>
+          <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, 'X')}</p>
+          <p><strong>Friendliness:</strong> {this.calcMetric(this.state.bartender.friendly_left, this.state.bartender.friendly_right, 'F')}</p>
+          <p><strong>Speed:</strong> {this.calcMetric(this.state.bartender.quick_left, this.state.bartender.quick_right, 'S')}</p>
           <p><strong>Badges:</strong> ADD BADGES HERE</p>
         </div>
-        <Legend/ >
-        <h3>Message of the Day</3>
+        <h3>Message of the Day</h3>
         <div id="message">
           <p>MAKE A MESSAGE COMPONENT HERE</p>
         </div>
+        <button>CLICK TO RATE</button>
+        <Legend/ >
+        <h3>Reviews</h3>
         <div>
           <p>POSSIBLY MAKE REVIEWS FEED HERE</p>
         </div>
+
       </div>
 
 
