@@ -26,8 +26,8 @@ var selectOneBar = function (id, callback) {
   });
 };
 
-var selectOneBartender = function (barid, btname, callback) {
-  connection.query(`SELECT * FROM bartenders WHERE bartenders.bar_id = '${barid}' AND bartenders.name = '${btname}'`, function (err, results, fields) {
+var selectOneBartender = function (btid, callback) {
+  connection.query(`SELECT * FROM bartenders WHERE bartenders.id = '${btid}'`, function (err, results, fields) {
   	if (err) {
   	  console.log('errored out from getting one bartender on models.js');
   	  callback(err, null);
