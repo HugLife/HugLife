@@ -182,8 +182,6 @@ class BarList extends Component {
         </div>
         * Numbers on map correspond to numbers on list
         ** X on map is your current location
-        <BarProfile />
-        <BartenderProfile />
       </div>
     )
   }

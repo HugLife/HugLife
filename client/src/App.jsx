@@ -4,7 +4,6 @@ import BarProfile from './BarProfile.jsx';
 import Header from './Header.jsx';
 import BartenderProfile from './BartenderProfile.jsx';
 import BarList from './BarList.jsx';
-
 const divStyle = {
   display: 'inline-block',
   float: 'right',
@@ -26,11 +25,15 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-  
+      page: 'home',
+      value: 'Enter Bar',
+      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}],
+      currentBar: [{name:'Tempest', key: 1}]
     }
   }
 
   componentDidMount() { 
+
 
   }
 
