@@ -3,7 +3,10 @@ import React from 'react';
 const headerStyle = {
   height: '100px',
   width: '100%',
-  border: '2px solid'
+  border: '2px solid',
+  backgroundImage: 'url(./bar.jpg)',
+  textAlign: 'center',
+  color: 'LawnGreen'
 };
 
 const Header = (props) => (
