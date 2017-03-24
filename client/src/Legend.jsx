@@ -10,10 +10,10 @@ const pStyle ={
 }
 
 const Legend = (props) => (
-  <div style={legendStyle}>
+  <div style={legendStyle} id="legend">
     <h4>What the Emojis Mean:</h4>
-    <p>(Insert Chili Pepper Here) ---- Hot Bartender</p>
-    <p>(Insert Hook Here) ---- Get the Hookup </p>
+    <p>HOT ---- Hot Bartender</p>
+    <p>HOOK ---- Get the Hookup </p>
     <p>[may need require an emoji library]</p>
   </div>
 )
