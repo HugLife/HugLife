@@ -15,7 +15,7 @@ class BarProfile extends Component {
         rating: 4.4,
         vicinity: "545 Irving Street, San Francisco"
       },
-      bartenders: [1,2,3,4,5]
+      bartenders: [{name: 'Todd'}, {name: 'Sam'}, {name: 'Ryan'}, {name: 'Greg'}, {name: 'Not Martin'},]
     }
   }
 
@@ -52,6 +52,16 @@ class BarProfile extends Component {
     }
   }
 
+  calculateRating () {
+    // sum up all all lefts
+    // sum up all rights
+    // sum left and rights together
+
+    // Create Ratio
+
+    
+  }
+
   componentDidMount() { 
 
   }
@@ -70,7 +80,7 @@ class BarProfile extends Component {
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders">
-          {this.state.bartenders.map(bartender => <BartenderListItem />)}
+          {this.state.bartenders.map(bartender => <BartenderListItem bartender={bartender} />)}
         </div>
       </div>
 
