@@ -71,7 +71,7 @@ app.post('/bartenderlist', function (req, res) {
   })
 })
 
-//will insert the bars into the database, should get an array
+//will insert the bars into the database, should get a stringified array
 //of objects in the body of the request, each representing one bar
 app.post('/barlist', function (req, res) {
   var body = '';
