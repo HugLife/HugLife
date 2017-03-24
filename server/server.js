@@ -8,6 +8,8 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
+
+//will get the first three bars on the database
 app.get('/barlist', function (req, res) {
   db.selectThreeBars(function (error, result) {
   	if (error) {
@@ -18,36 +20,59 @@ app.get('/barlist', function (req, res) {
   });
 });
 
-app.get('/bar', function (req, res) {
-  db.selectOneBar(2, function (error, result) {
-  	if (error) {
-  	  console.log('errored out /bar', error);
-  	}
-  	console.log('this is the bar', result);
-  	res.send(result);
+//will get all the information of one bar, should receive
+// that bar id in the body of the request as a string
+app.post('/bar', function (req, res) {
+  var body = '';
+  req.on('data', function (chunk) {
+    body += chunk;
+    var barID = JSON.parse(body);
+    db.selectOneBar(Number(barID), function (error, result) {
+    	if (error) {
+    	  console.log('errored out /bar', error);
+    	}
+    	console.log('this is the bar', result);
+    	res.send(result);
+    })
+  })
+})  
+
+//will get all the information of one bartender, should receive
+//the id of the bartender in the body of the request as a string
+app.post('/bartender', function (req, res) {
+  var body = '';
+  req.on('data', function (chunk) {
+    body += chunk;
+    var id = JSON.parse(body);
+  	db.selectOneBartender(Number(id), function (error, result) {
+  	  if (error) {
+  	  	console.log('errored out /bartender', error);
+  	  }
+  	  console.log('this is the bartender', result);
+  	  res.send(result);
+  	})
   })
 })
 
-app.get('/bartender', function (req, res) {
-	db.selectOneBartender(2, 'Datum Bass', function (error, result) {
-	  if (error) {
-	  	console.log('errored out /bartender', error);
-	  }
-	  console.log('this is the bartender', result);
-	  res.send(result);
-	})
+//will get all the bartenders associated to one bar, should receive
+//the id of the bar in the body of the request as a string
+app.post('/bartenderlist', function (req, res) {
+  var body = '';
+  req.on('data', function (chunk) {
+    body += chunk;
+    var barID = JSON.parse(body);
+  	db.selectAllBartendersFromBar(Number(barID), function (error, result) {
+  	  if (error) {
+  	  	console.log('errored out from /bartenderlist', error)
+  	  }
+  	  console.log('this is the bartender list', result);
+  	  res.send(result);
+  	})
+  })
 })
 
-app.get('/bartenderlist', function (req, res) {
-	db.selectAllBartendersFromBar(1, function (error, result) {
-	  if (error) {
-	  	console.log('errored out from /bartenderlist', error)
-	  }
-	  console.log('this is the bartender list', result);
-	  res.send(result);
-	})
-})
-
+//will insert the bars into the database, should get an array
+//of objects in the body of the request, each representing one bar
 app.post('/barlist', function (req, res) {
   var body = '';
   req.on('data', function (chunk) {
@@ -65,6 +90,12 @@ app.post('/barlist', function (req, res) {
   res.send();
 })
 
+//Will add 1 to either the left or right of a bartender's aspect
+//Should receive an object with side, bartenderID and aspect properties
+// side should be either right of left
+// bartenderID should be the specific id of the bartender to rate
+// aspect should be one of the following strings: expert_right, expert_left
+// friendly_right, friendly_left, quick_right, quick_left
 app.post('/rate', function (req, res) {
   var body = '';
   req.on('data', function (chunk) {
