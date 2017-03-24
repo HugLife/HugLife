@@ -2,7 +2,7 @@ import React from 'react';
 
 const imgStyle = {
   height: '40px',
-  width: '40px',
+  width: '40px'
 };
 
 const BartenderListItem = (props) => (

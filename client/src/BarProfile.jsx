@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import BartenderListItem from './BartenderListItem.jsx';
+import Header from './Header.jsx';
 
 
 class BarProfile extends Component {
@@ -52,12 +53,14 @@ class BarProfile extends Component {
   }
 
   componentDidMount() { 
- 
+
   }
+
   render() {
 
     return (
       <div>
+        <Header />
         <h1>{this.state.bar.name}</h1>
         <div id="barinfo">
           <p><strong>Open Now:</strong> {this.renderOpen(this.state.bar.opening_hours.open_now)}</p>

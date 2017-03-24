@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import BarProfile from './BarProfile.jsx';
+import Header from './Header.jsx';
 
 const divStyle = {
   display: 'inline-block',
@@ -25,7 +26,8 @@ class App extends Component {
     this.state = {
       page: 'home',
       value: 'Enter Bar',
-      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}]
+      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}],
+      currentBar: [{name:'Tempest', key: 1}]
     }
   }
 
@@ -50,10 +52,6 @@ class App extends Component {
     })
   }
 
-  searchMap (location) {
-    
-  }
-
   componentDidMount() { 
 
     var context = this;
@@ -66,7 +64,7 @@ class App extends Component {
    
         var map = new google.maps.Map(document.getElementById('map'), {
           center: pos,
-          zoom: 17
+          zoom: 10
         });
 
         var service = new google.maps.places.PlacesService(map);
@@ -74,8 +72,6 @@ class App extends Component {
           location: pos,
           types: ['bar'],
           rankBy: google.maps.places.RankBy.DISTANCE
-
-
         }, function(results, status, pagination) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               console.log('error')
@@ -103,8 +99,6 @@ class App extends Component {
                 bars: results
               });
 
-              
-
               for (var i = 0; i < results.length; i++){
                 addMarker(results[i]);
               }
@@ -116,7 +110,7 @@ class App extends Component {
       }, function(){
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.7876, lng: -122.4001},
-          zoom: 17
+          zoom: 15
         });
 
          var service = new google.maps.places.PlacesService(map);
@@ -167,16 +161,18 @@ class App extends Component {
 
 
   }
+
   render() {
 
     return (
       <div>
+        <Header />
         <div>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
           <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
         </div>
         <div>
-          <h4>Bar List</h4>
+          <h4>Bars Near You</h4>
           <ol>
             {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
           </ol>
@@ -184,7 +180,7 @@ class App extends Component {
         <div style={mapStyle} id="map">
         </div>
 
-        <BarProfile />
+        <BarProfile bar={this.state.currentBar} />
       </div>
     )
   }
