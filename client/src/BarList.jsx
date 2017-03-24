@@ -21,7 +21,7 @@ const mapStyle = {
 
 };
 
-class App extends Component {
+class BarList extends Component {
   constructor(props) {
     super(props)
     this.state = {
