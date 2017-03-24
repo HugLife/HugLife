@@ -28,14 +28,14 @@ class RateBartender extends Component {
   }
 
   submitRating() {
-    $('#ratebutton').show();
     $('#rater').hide();
+ 
   }
 
 
 
   componentDidMount() { 
-    $('#rater').hide();
+    
   }
 
   render() {
