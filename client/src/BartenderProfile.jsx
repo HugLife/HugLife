@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import BartenderListItem from './BartenderListItem.jsx';
 import Header from './Header.jsx';
 import Legend from './Legend.jsx';
 import Message from './Message.jsx';
+import RateBartender from './RateBartender.jsx';
+
 
 
 
@@ -24,7 +25,7 @@ class BartenderProfile extends Component {
         hook: true,
         message: 'Come See Me at the Bar Tonight, I\'ll get you Drunk!'
       },
-      reviews: []
+      reviews: [] // you can probably source from reviews Schema
     }
   }
 
@@ -54,6 +55,11 @@ class BartenderProfile extends Component {
     return badges;
   }
 
+  openRater() {
+    $('#ratebutton').hide();
+    $('#rater').show();
+  }
+
 
 
   componentDidMount() { 
@@ -76,7 +82,8 @@ class BartenderProfile extends Component {
           <h3>Message of the Day</h3>
           <p>{this.state.bartender.message}</p>
         </div>
-        <button>CLICK TO RATE</button>
+        <button id="ratebutton" onClick={this.openRater}>CLICK TO RATE</button>
+        <RateBartender />
         <Legend/ >
         <h3>Reviews</h3>
         <div>
