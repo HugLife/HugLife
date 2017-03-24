@@ -180,7 +180,7 @@ class App extends Component {
           </div>
         <div style={mapStyle} id="map">
         </div>
-
+        *Numbers on map correspond to numbers on list*
         <BarProfile />
         <BartenderProfile />
       </div>
