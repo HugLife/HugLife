@@ -3,6 +3,7 @@ import $ from 'jquery';
 import BartenderListItem from './BartenderListItem.jsx';
 import Header from './Header.jsx';
 import Legend from './Legend.jsx';
+import Message from './Message.jsx';
 
 
 
@@ -39,10 +40,24 @@ class BartenderProfile extends Component {
     return rating;
   }
 
+  renderBadges() {
+    var badges = '';
+
+    if (this.state.bartender.hot === true) {
+      badges += 'HOT '
+    }
+
+    if (this.state.bartender.hook === true) {
+      badges += 'HOOK '
+    }
+
+    return badges;
+  }
+
 
 
   componentDidMount() { 
-
+    
   }
 
   render() {
@@ -55,11 +70,11 @@ class BartenderProfile extends Component {
           <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, 'X')}</p>
           <p><strong>Friendliness:</strong> {this.calcMetric(this.state.bartender.friendly_left, this.state.bartender.friendly_right, 'F')}</p>
           <p><strong>Speed:</strong> {this.calcMetric(this.state.bartender.quick_left, this.state.bartender.quick_right, 'S')}</p>
-          <p><strong>Badges:</strong> ADD BADGES HERE</p>
+          <p><strong>Badges:</strong> {this.renderBadges()}</p>
         </div>
-        <h3>Message of the Day</h3>
-        <div id="message">
-          <p>MAKE A MESSAGE COMPONENT HERE</p>
+        <div>
+          <h3>Message of the Day</h3>
+          <p>{this.state.bartender.message}</p>
         </div>
         <button>CLICK TO RATE</button>
         <Legend/ >
