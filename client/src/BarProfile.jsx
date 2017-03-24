@@ -14,7 +14,7 @@ class BarProfile extends Component {
         rating: 4.4,
         vicinity: "545 Irving Street, San Francisco"
       },
-      bartenders: []
+      bartenders: [1,2,3,4,5]
     }
   }
 
@@ -45,12 +45,14 @@ class BarProfile extends Component {
     }
   }
 
-  componentDidMount() { 
-    if (this.state.bartenders.length === 0){
-      var $bartenders = $('#bartenders');
-
-      $bartenders.innerhtml = '<p>THERE ARE NO BARTENDERS REGISTERED WITH THIS BAR</p>';
+  renderListItems () {
+    if (this.state.bartenders.length === 0) {
+      $('#bartenders').append('<p>*NO BARTENDERS ARE REGISTERED HERE</p>')
     }
+  }
+
+  componentDidMount() { 
+ 
   }
   render() {
 
@@ -65,7 +67,7 @@ class BarProfile extends Component {
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders">
-          <BartenderListItem />
+          {this.state.bartenders.map(bartender => <BartenderListItem />)}
         </div>
       </div>
 
