@@ -27,7 +27,7 @@ app.post('/bar', function (req, res) {
   req.on('data', function (chunk) {
     body += chunk;
     var barID = JSON.parse(body);
-    db.selectOneBar(Number(barID), function (error, result) {
+    db.selectOneBar(barID, function (error, result) {
     	if (error) {
     	  console.log('errored out /bar', error);
     	}
@@ -61,7 +61,7 @@ app.post('/bartenderlist', function (req, res) {
   req.on('data', function (chunk) {
     body += chunk;
     var barID = JSON.parse(body);
-  	db.selectAllBartendersFromBar(Number(barID), function (error, result) {
+  	db.selectAllBartendersFromBar(barID, function (error, result) {
   	  if (error) {
   	  	console.log('errored out from /bartenderlist', error)
   	  }
