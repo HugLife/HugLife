@@ -108,8 +108,12 @@ class BarList extends Component {
 
             }
         }) 
+<<<<<<< HEAD
       }, function(error){
         console.log(error);
+=======
+      }, function(){
+>>>>>>> a5e8e71fe016f9e2693e6e5cbaac3aa2f8af3bd5
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.7876, lng: -122.4001},
           zoom: 15
@@ -161,7 +165,11 @@ class BarList extends Component {
       // do nothing
     }
 
+<<<<<<< HEAD
     $('#rater').hide();
+=======
+
+>>>>>>> a5e8e71fe016f9e2693e6e5cbaac3aa2f8af3bd5
   }
 
   render() {
@@ -183,7 +191,10 @@ class BarList extends Component {
         </div>
         * Numbers on map correspond to numbers on list
         ** X on map is your current location
+<<<<<<< HEAD
   
+=======
+>>>>>>> a5e8e71fe016f9e2693e6e5cbaac3aa2f8af3bd5
       </div>
     )
   }
