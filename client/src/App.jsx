@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import BarProfile from './BarProfile.jsx';
 import Header from './Header.jsx';
+import BartenderProfile from './BartenderProfile.jsx';
 
 const divStyle = {
   display: 'inline-block',
@@ -180,7 +181,8 @@ class App extends Component {
         <div style={mapStyle} id="map">
         </div>
 
-        <BarProfile bar={this.state.currentBar} />
+        <BarProfile />
+        <BartenderProfile />
       </div>
     )
   }
