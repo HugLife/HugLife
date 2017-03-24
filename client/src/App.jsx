@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import BarProfile from './BarProfile.jsx';
 
 const divStyle = {
   display: 'inline-block',
@@ -182,6 +183,8 @@ class App extends Component {
           </div>
         <div style={mapStyle} id="map">
         </div>
+
+        <BarProfile />
       </div>
     )
   }
