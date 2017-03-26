@@ -24,7 +24,7 @@ class BarProfile extends Component {
     var adjRate = Math.ceil(rating);
     var stars = ''
     for (var i = 1; i <= adjRate; i++){
-      stars += '*'
+      stars += '🌟 '
     }
 
     return stars;
@@ -33,7 +33,7 @@ class BarProfile extends Component {
   renderPrice(price) {
     var dollars = '';
     for (var i = 1; i <= price; i++){
-      dollars += '$'
+      dollars += '💵 '
     }
 
     return dollars;
@@ -92,8 +92,8 @@ class BarProfile extends Component {
         <div id="barinfo">
           <p><strong>Open Now:</strong> {this.renderOpen(this.state.bar.opening_hours.open_now)}</p>
           <p><strong>Address:</strong> {this.state.bar.vicinity}</p>
-          <p><strong>Price:</strong> {this.renderPrice(this.state.bar.price_level)}</p>
-          <p><strong>Google Rating:</strong> {this.renderStars(this.state.bar.rating)}</p>
+          <p><strong>Price:</strong> {this.renderPrice(this.state.bar.price_level)} / 5</p>
+          <p><strong>Google Rating:</strong> {this.renderStars(this.state.bar.rating)} / 5</p>
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders">
