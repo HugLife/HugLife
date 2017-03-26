@@ -38,20 +38,6 @@ class BarList extends Component {
     });
   }
 
-  handleSubmit(value) {
-    console.log(value);
-    $.ajax({
-      url: '/bars',
-      type: 'POST',
-      data: value,
-      success: function (data) {
-          console.log("this was a success.")
-      },
-      error: function () {
-        console.log("we got a bug")
-      }
-    })
-  }
 
   componentDidMount() { 
 
@@ -107,6 +93,19 @@ class BarList extends Component {
               addHome(pos);
 
             }
+
+            $.ajax({
+              url:'/barlist',
+              data: JSON.stringify(results),
+              type: 'POST',
+              contentType: 'text/plain',
+              success: function(){
+                console.log('SENT TO SERVER');
+              },
+              error: function(err){
+                console.log('ERR', err);
+              }
+            })
         }) 
 
       }, function(error){
@@ -173,13 +172,13 @@ class BarList extends Component {
   render() {
 
     return (
-      <div>
+      <div className='container'>
         <Header />
-        <div>
+        <div className='jumbotron'>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-          <button onClick={this.handleSubmit(this.state.value)}>Add Bar</button> 
+          <button className='btn btn-primary'>Add Bar</button> 
         </div>
-        <div>
+        <div className='jumbotron'>
           <h4>Bars Near You</h4>
           <ol>
             {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
