@@ -70,25 +70,25 @@ class BartenderProfile extends Component {
   render() {
 
     return (
-      <div>
+      <div className='container'>
         <Header />
         <h1>{this.state.bartender.name}</h1>
-        <div id="bartenderinfo">
+        <div id="bartenderinfo" className='jumbotron'>
           <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, '🤹')} / 5</p>
           <p><strong>Friendliness:</strong> {this.calcMetric(this.state.bartender.friendly_left, this.state.bartender.friendly_right, '🤗')} / 5</p>
           <p><strong>Speed:</strong> {this.calcMetric(this.state.bartender.quick_left, this.state.bartender.quick_right, '💨')} / 5</p>
           <p><strong>Badges:</strong> {this.renderBadges()}</p>
         </div>
-        <div>
+        <div className='jumbotron'>
           <h3>Message of the Day</h3>
           <p>{this.state.bartender.message}</p>
         </div>
-        <button id="ratebutton" onClick={this.openRater}>CLICK TO RATE</button>
+        <button id="ratebutton" className='btn btn-info btn-lg' onClick={this.openRater}>CLICK TO RATE</button>
         <h4 id="ratingconf">Thanks for rating!</h4>
         <RateBartender bartender={this.state.bartender} />
         <Legend/ >
         <h3>Reviews</h3>
-        <div>
+        <div className='jumbotron'>
           <p>POSSIBLY MAKE REVIEWS FEED HERE</p>
         </div>
 

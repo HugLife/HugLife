@@ -12,7 +12,7 @@ const headerStyle = {
 const Header = (props) => (
   <header style={headerStyle}>
     <h1>DRINK'D</h1>
-    <h3>an app that raises the Bar</h3>
+    <kbd>an app that raises the Bar</kbd>
   </header>
 )
 

@@ -91,17 +91,17 @@ class BarProfile extends Component {
   render() {
 
     return (
-      <div>
+      <div className='container'>
         <Header />
         <h1>{this.state.bar.name}</h1>
-        <div id="barinfo">
+        <div id="barinfo" className='jumbrotron'>
           <p><strong>Open Now:</strong> {this.renderOpen(this.state.bar.opening_hours.open_now)}</p>
           <p><strong>Address:</strong> {this.state.bar.vicinity}</p>
           <p><strong>Price:</strong> {this.renderPrice(this.state.bar.price_level)} / 5</p>
           <p><strong>Google Rating:</strong> {this.renderStars(this.state.bar.rating)} / 5</p>
         </div>
         <h2>Our Bartenders</h2>
-        <div id="bartenders">
+        <div id="bartenders" className='jumbotron'>
           {this.state.bartenders.map(bartender => <BartenderListItem calcRating={this.calculateRating} bartender={bartender} />)}
         </div>
       </div>
