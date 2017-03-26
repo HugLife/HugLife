@@ -14,6 +14,7 @@ class BartenderProfile extends Component {
     this.state = {
       bartender: {
         name: 'Esteban Quito',
+        id: 1,
         bar_id: 1,
         expert_right: 15,
         expert_left: 3,
@@ -85,7 +86,7 @@ class BartenderProfile extends Component {
         </div>
         <button id="ratebutton" onClick={this.openRater}>CLICK TO RATE</button>
         <h4 id="ratingconf">Thanks for rating!</h4>
-        <RateBartender />
+        <RateBartender bartender={this.state.bartender} />
         <Legend/ >
         <h3>Reviews</h3>
         <div>

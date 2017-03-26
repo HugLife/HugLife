@@ -53,14 +53,19 @@ class BarProfile extends Component {
     }
   }
 
-  calculateRating () {
-    // sum up all all lefts
-    // sum up all rights
-    // sum left and rights together
+  calculateRating (bartender) {
+    var lefts = bartender.friendly_left + bartender.quick_left + bartender.expert_left;
+    var rights = bartender.friendly_right + bartender.quick_right + bartender.expert_right;
+    var total = lefts + rights;
 
-    // Create Ratio
+    var starCount = Math.ceil((rights / total) * 10);
+    var string = '';
 
-    
+    for (var i = 1; i <= starCount; i++){
+      string += '⭐ ';
+    }
+
+    return string;
   }
 
   componentDidMount() { 
@@ -97,7 +102,7 @@ class BarProfile extends Component {
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders">
-          {this.state.bartenders.map(bartender => <BartenderListItem bartender={bartender} />)}
+          {this.state.bartenders.map(bartender => <BartenderListItem calcRating={this.calculateRating} bartender={bartender} />)}
         </div>
       </div>
 
