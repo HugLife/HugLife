@@ -10,7 +10,7 @@ const pStyle ={
 }
 
 const Legend = (props) => (
-  <div style={legendStyle} id="legend">
+  <div style={legendStyle} id="legend" className='container'>
     <h4>Badge Key</h4>
     <p>🌶  ---- Hot Bartender</p>
     <p>🎣  ---- Bartender will hook you up (with free drinks)</p>

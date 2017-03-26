@@ -231,22 +231,22 @@ class RateBartender extends Component {
   render() {
     // TODO figure out a way to display currently selected thing (possible Radio buttons)
     return (
-      <div style={raterStyle} id="rater">
+      <div style={raterStyle} id="rater" className='container'>
         <h4>How would you rate {this.state.bartender.name}?</h4>
         <span>{this.state.expertSelect}</span><br />
         <div id="expert"> 
-          <button onClick={this.downvoteExpertise.bind(this)}>👎</button>-----EXPERTISE-----<button onClick={this.upvoteExpertise.bind(this)}>👍</button><br />
+          <button onClick={this.downvoteExpertise.bind(this)} className='btn btn-danger'>👎</button>-----EXPERTISE-----<button onClick={this.upvoteExpertise.bind(this)} className='btn btn-success'>👍</button><br />
         </div>
         <span>{this.state.friendlySelect}</span><br />
         <div id="friendly"> 
-          <button onClick={this.downvoteFriendly.bind(this)}>👎</button>-----FRIENDLINESS-----<button onClick={this.upvoteFriendly.bind(this)}>👍</button><br />
+          <button onClick={this.downvoteFriendly.bind(this)} className='btn btn-danger'>👎</button>-----FRIENDLINESS-----<button onClick={this.upvoteFriendly.bind(this)} className='btn btn-success'>👍</button><br />
         </div>
         <span>{this.state.quickSelect}</span><br />
         <div id="quick">
-          <button onClick={this.downvoteQuick.bind(this)}>👎</button>-----SPEED-----<button onClick={this.upvoteQuick.bind(this)}>👍</button><br />
+          <button onClick={this.downvoteQuick.bind(this)} className='btn btn-danger'>👎</button>-----SPEED-----<button onClick={this.upvoteQuick.bind(this)} className='btn btn-success'>👍</button><br />
         </div>
         <h5>Click Below To Sumbit</h5>
-        <button onClick={this.submitRating.bind(this)}>Submit Rating</button>
+        <button onClick={this.submitRating.bind(this)} className='btn btn-primary'>Submit Rating</button>
       </div>
 
     )
