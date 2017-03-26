@@ -72,15 +72,35 @@ class RateBartender extends Component {
       error: function(err) {
         console.log(err);
       }
-
-    })
+    });
 
     $('#expert').hide();
   }
 
   downvoteExpertise () { 
+    var context = this;
+
     this.setState({
       expertSelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Expertise!'
+    });
+
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'expert_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to expert_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
     });
 
     $('#expert').hide();
@@ -88,36 +108,122 @@ class RateBartender extends Component {
 
 
   upvoteFriendly () { 
+    var context = this;
     this.setState({
       friendlySelect: 'Thanks for voting 👍 on ' + this.state.bartender + '\'s Friendliness!'
+    });
+
+    var data = {
+      side: 'right',
+      bartenderID: context.state.id,
+      aspect: 'friendly_right'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to friendly_right');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+
     });
 
     $('#friendly').hide();
   }
 
   downvoteFriendly () {
+    var context = this;
     this.setState({
       friendlySelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Friendliness!'
+    });
+
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'friendly_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to friendly_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
     });
 
     $('#friendly').hide();
   }
 
   upvoteQuick () {
+    var context = this;
+    
     this.setState({
       quickSelect: 'Thanks for voting 👍 on ' + this.state.bartender + '\'s Speed!'
     });
+
+    var data = {
+      side: 'right',
+      bartenderID: context.state.id,
+      aspect: 'quick_right'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to quick_right');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
+
 
     $('#quick').hide();
   }
 
   downvoteQuick () {
+    var context = this;
     this.setState({
       quickSelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Speed!'
     });
 
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'quick_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to quick_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
+
     $('#quick').hide();
   }
+
   componentDidMount() { 
     
   }

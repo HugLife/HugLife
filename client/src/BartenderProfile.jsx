@@ -25,8 +25,7 @@ class BartenderProfile extends Component {
         hot: true,
         hook: true,
         message: 'Come See Me at the Bar Tonight, I\'ll get you Drunk!'
-      },
-      reviews: [] // you can probably source from reviews Schema
+      }
     }
   }
 
