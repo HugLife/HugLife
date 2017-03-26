@@ -14,7 +14,7 @@ class BartenderProfile extends Component {
     this.state = {
       bartender: {
         name: 'Esteban Quito',
-        id: 1,
+        id: 6,
         bar_id: 1,
         expert_right: 15,
         expert_left: 3,
@@ -25,8 +25,7 @@ class BartenderProfile extends Component {
         hot: true,
         hook: true,
         message: 'Come See Me at the Bar Tonight, I\'ll get you Drunk!'
-      },
-      reviews: [] // you can probably source from reviews Schema
+      }
     }
   }
 

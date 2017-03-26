@@ -12,6 +12,7 @@ class RateBartender extends Component {
     this.state = {
       // note Maybe break up into separate objects
       bartender: props.bartender.name,
+      id: props.bartender.id,
       reviewer: 'TEST',
       expert_right: 0,
       expert_left: 0,
@@ -47,29 +48,89 @@ class RateBartender extends Component {
     
   }
 
-  upvoteExpertise () {
+  upvoteExpertise () {  
     var context = this;
-    context.setState({
-      expertSelect: 'Thanks for voting 👍 on ' + context.state.bartender + '\'s Expertise!'
+    this.setState({
+      expertSelect: 'Thanks for voting 👍 on ' + this.state.bartender + '\'s Expertise!'
+    });
+    console.log(context.state.id);
+    
+    var data = {
+      side: 'right',
+      bartenderID: context.state.id,
+      aspect: 'expert_right'
+    };
+
+   $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to expert_right');
+      },
+      error: function(err) {
+        console.log(err);
+      }
     });
 
     $('#expert').hide();
   }
 
-  downvoteExpertise () {
+  downvoteExpertise () { 
     var context = this;
-    context.setState({
-      expertSelect: 'Sorry you voted 👎 on ' + context.state.bartender + '\'s Expertise!'
+
+    this.setState({
+      expertSelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Expertise!'
+    });
+
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'expert_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to expert_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
     });
 
     $('#expert').hide();
   }
 
 
-  upvoteFriendly () {
+  upvoteFriendly () { 
     var context = this;
-    context.setState({
-      friendlySelect: 'Thanks for voting 👍 on ' + context.state.bartender + '\'s Friendliness!'
+    this.setState({
+      friendlySelect: 'Thanks for voting 👍 on ' + this.state.bartender + '\'s Friendliness!'
+    });
+
+    var data = {
+      side: 'right',
+      bartenderID: context.state.id,
+      aspect: 'friendly_right'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to friendly_right');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+
     });
 
     $('#friendly').hide();
@@ -77,8 +138,27 @@ class RateBartender extends Component {
 
   downvoteFriendly () {
     var context = this;
-    context.setState({
-      friendlySelect: 'Sorry you voted 👎 on ' + context.state.bartender + '\'s Friendliness!'
+    this.setState({
+      friendlySelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Friendliness!'
+    });
+
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'friendly_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to friendly_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
     });
 
     $('#friendly').hide();
@@ -86,25 +166,67 @@ class RateBartender extends Component {
 
   upvoteQuick () {
     var context = this;
-    context.setState({
-      quickSelect: 'Thanks for voting 👍 on ' + context.state.bartender + '\'s Speed!'
+    
+    this.setState({
+      quickSelect: 'Thanks for voting 👍 on ' + this.state.bartender + '\'s Speed!'
     });
+
+    var data = {
+      side: 'right',
+      bartenderID: context.state.id,
+      aspect: 'quick_right'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to quick_right');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
+
 
     $('#quick').hide();
   }
 
   downvoteQuick () {
     var context = this;
-    context.setState({
-      quickSelect: 'Sorry you voted 👎 on ' + context.state.bartender + '\'s Speed!'
+    this.setState({
+      quickSelect: 'Sorry you voted 👎 on ' + this.state.bartender + '\'s Speed!'
     });
+
+    var data = {
+      side: 'left',
+      bartenderID: context.state.id,
+      aspect: 'quick_left'
+    };
+
+    $.ajax({
+      url: '/rate',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'text/plain',
+      success: function(result) {
+        console.log('ADDED 1 to quick_left');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
 
     $('#quick').hide();
   }
+
   componentDidMount() { 
     
   }
-
 
   render() {
     // TODO figure out a way to display currently selected thing (possible Radio buttons)
