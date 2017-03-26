@@ -9,6 +9,7 @@ class BarProfile extends Component {
     super(props)
     this.state = {
       bar: {
+        id: 1,
         name: "Inner Fog",
         opening_hours: {open_now: true},
         price_level: 2,
@@ -63,7 +64,23 @@ class BarProfile extends Component {
   }
 
   componentDidMount() { 
+    var context = this;
+    console.log('mounted profile')
+    $.ajax({
+      url: '/bartenderlist',
+      type: 'POST',
+      data: JSON.stringify(1),
+      contentType: 'text/plain',
+      success: function(result) {
+        context.setState({
+            bartenders: result
+          })
+      },
+      error: function(err) {
+        console.log(err);
+      }
 
+    })
   }
 
   render() {
