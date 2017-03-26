@@ -35,7 +35,7 @@ class BartenderProfile extends Component {
     var rating = '';
 
     for (var i = 1; i <= ratio; i++) {
-      rating += emoji;
+      rating += emoji + ' ';
     }
 
     return rating;
@@ -45,11 +45,11 @@ class BartenderProfile extends Component {
     var badges = '';
 
     if (this.state.bartender.hot === true) {
-      badges += 'HOT '
+      badges += '🌶 '
     }
 
     if (this.state.bartender.hook === true) {
-      badges += 'HOOK '
+      badges += '🎣 '
     }
 
     return badges;
@@ -74,9 +74,9 @@ class BartenderProfile extends Component {
         <Header />
         <h1>{this.state.bartender.name}</h1>
         <div id="bartenderinfo">
-          <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, 'X')}</p>
-          <p><strong>Friendliness:</strong> {this.calcMetric(this.state.bartender.friendly_left, this.state.bartender.friendly_right, 'F')}</p>
-          <p><strong>Speed:</strong> {this.calcMetric(this.state.bartender.quick_left, this.state.bartender.quick_right, 'S')}</p>
+          <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, '🤹')} / 5</p>
+          <p><strong>Friendliness:</strong> {this.calcMetric(this.state.bartender.friendly_left, this.state.bartender.friendly_right, '🤗')} / 5</p>
+          <p><strong>Speed:</strong> {this.calcMetric(this.state.bartender.quick_left, this.state.bartender.quick_right, '💨')} / 5</p>
           <p><strong>Badges:</strong> {this.renderBadges()}</p>
         </div>
         <div>
