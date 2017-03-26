@@ -14,7 +14,7 @@ class BartenderProfile extends Component {
     this.state = {
       bartender: {
         name: 'Esteban Quito',
-        id: 1,
+        id: 6,
         bar_id: 1,
         expert_right: 15,
         expert_left: 3,
