@@ -7,6 +7,10 @@
   "engines": {
     "node": ">=6.4.0"
   },
+  "bugs": {
+    "url": "https://github.com/HugLife/HugLife",
+    "email": "daartv@gmail.com"
+  },
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/server.js",
