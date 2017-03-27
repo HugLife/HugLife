@@ -102,13 +102,22 @@ class BarProfile extends Component {
     $('#barlistpage').show();
   }
 
+  goToLogin () {
+    $('input').val('');
+    $('#loginpage').show();
+    $('#barlistpage').hide();
+    $('#barprofilepage').hide();
+    $('#bartenderprofilepage').hide();
+  }
+
   //Should query the database to find bartenders associated with the bar and map them
 
   render() {
 
     return (
-      <div className='container' id="barprofilepage" onClick={this.selectBartender}>
+      <div className='container' id="barprofilepage" >
         <Header />
+        <button onClick={this.goToLogin} className='btn btn-info btn-lg'>Logout</button>
         <button onClick={this.goToBarList} className='btn btn-info btn-lg'>GO BACK TO BAR LIST PAGE</button>
         <h1>{this.state.bar.name}</h1>
         <div id="barinfo" className='jumbrotron'>
@@ -118,7 +127,7 @@ class BarProfile extends Component {
           <p><strong>Google Rating:</strong> {this.renderStars(this.state.bar.rating)} / 5</p>
         </div>
         <h2>Our Bartenders</h2>
-        <div id="bartenders" className='jumbotron'>
+        <div id="bartenders" className='jumbotron' onClick={this.selectBartender}>
           
           {this.state.bartenders.map(bartender => <BartenderListItem onClick={this.selectBartender} calcRating={this.calculateRating} bartender={bartender} />)}
 

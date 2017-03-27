@@ -70,6 +70,14 @@ class BartenderProfile extends Component {
     $('#barprofilepage').show();
     $('#bartenderprofilepage').hide();
   }
+  goToLogin () {
+    $('input').val('');
+    $('#loginpage').show();
+    $('#barlistpage').hide();
+    $('#bartenderprofilepage').hide();
+    $('#barprofilepage').hide();
+
+  }
 
   //Should post to the databsae when the rating is done
   render() {
@@ -77,6 +85,7 @@ class BartenderProfile extends Component {
     return (
       <div className='container' id="bartenderprofilepage">
         <Header />
+        <button onClick={this.goToLogin} className='btn btn-info btn-lg'>Logout</button>
         <button onClick={this.goToBarPage} className='btn btn-info btn-lg'>GO BACK TO BAR PROFILE PAGE</button>
         <h1>{this.state.bartender.name}</h1>
         <div id="bartenderinfo" className='jumbotron'>
