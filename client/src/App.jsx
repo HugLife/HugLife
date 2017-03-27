@@ -38,6 +38,7 @@ class App extends Component {
     //* Does not represent intetntion of Application refactor
     $('#barprofilepage').hide();
     $('#bartenderprofilepage').hide();
+    $('#barlistpage').hide();
   }
 
   render() {

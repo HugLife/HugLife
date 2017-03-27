@@ -176,6 +176,12 @@ class BarList extends Component {
     $('#barprofilepage').show();
   }
 
+  goToLogin () {
+    $('input').val('');
+    $('#loginpage').show();
+    $('#barlistpage').hide();
+  }
+
   //OnClick of a bar, the bar profile component should re render to show the information the bar that was clicked
 
   render() {
@@ -183,10 +189,12 @@ class BarList extends Component {
     return (
       <div className='container' id="barlistpage">
         <Header />
+         <button onClick={this.goToLogin} className='btn btn-info btn-lg'>Logout</button>
         <div className='jumbotron'>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-          <button className='btn btn-primary'>Add Bar</button> 
+          <button className='btn btn-primary'>Search</button> 
         </div>
+
         <div className='jumbotron'>
           <h4>Bars Near You</h4>
           <ol>
@@ -197,7 +205,6 @@ class BarList extends Component {
         </div>
         * Numbers on map correspond to numbers on list
         ** X on map is your current location
-        <BarProfile />
       </div>
     )
   }
