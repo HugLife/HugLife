@@ -196,11 +196,46 @@ class BarList extends Component {
 
     geocoder.geocode({address: address}, function(results, status) {
       if (status === 'OK') {
+
+        var pos = results[0].geometry.location;
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
           map: map,
-          position: results[0].geometry.location
+          label: 'X',
+          position: pos
         })
+
+      var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pos,
+          types: ['bar'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+        }, function(results, status, pagination) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              console.log('error')
+              return;
+            } else {
+
+            function addMarker(place) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location,
+              label: '' + (i + 1)
+            });
+            }
+              console.log(results);
+              context.setState({
+                bars: results
+              });
+
+              for (var i = 0; i < results.length; i++){
+                addMarker(results[i]);
+              }
+
+            }
+        }) 
+
+
       } else {
         console.log('not successful: ' + status)
       }
