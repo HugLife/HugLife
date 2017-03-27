@@ -5,7 +5,6 @@ const imgStyle = {
   width: '40px'
 };
 
-
 const BartenderListItem = (props) => (
   <div className="bartender container">
     <img style={imgStyle} src="./pom.jpg" />

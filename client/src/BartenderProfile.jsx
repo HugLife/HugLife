@@ -61,17 +61,22 @@ class BartenderProfile extends Component {
     $('#ratingconf').hide();
   }
 
-
-
   componentDidMount() { 
     
+  }
+
+  //*Not part of original intention, For presentation purposes onlny
+  goToBarPage (){
+    $('#barprofilepage').show();
+    $('#bartenderprofilepage').hide();
   }
 
   render() {
 
     return (
-      <div className='container'>
+      <div className='container' id="bartenderprofilepage">
         <Header />
+        <button onClick={this.goToBarPage} className='btn btn-info btn-lg'>GO BACK TO BAR PROFILE PAGE</button>
         <h1>{this.state.bartender.name}</h1>
         <div id="bartenderinfo" className='jumbotron'>
           <p><strong>Expertise:</strong> {this.calcMetric(this.state.bartender.expert_left, this.state.bartender.expert_right, '🤹')} / 5</p>
@@ -89,7 +94,7 @@ class BartenderProfile extends Component {
         <Legend/ >
         <h3>Reviews</h3>
         <div className='jumbotron'>
-          <p>POSSIBLY MAKE REVIEWS FEED HERE</p>
+          <p>FEATURE UNDER CONSTRUCTION; Check Back later!</p>
         </div>
 
       </div>
