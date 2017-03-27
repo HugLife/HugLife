@@ -169,6 +169,7 @@ class BarList extends Component {
 
   }
 
+  //OnClick of a bar, the bar profile component should re render to show the information the bar that was clicked
   render() {
 
     return (
@@ -181,14 +182,14 @@ class BarList extends Component {
         <div className='jumbotron'>
           <h4>Bars Near You</h4>
           <ol>
-            {this.state.bars.map(bar => <li key={bar.id}>{bar.name}</li>)}
+            {this.state.bars.map(bar => <li key={bar.id} bar={bar}>{bar.name}</li>)}
           </ol>
           </div>
         <div style={mapStyle} id="map">
         </div>
         * Numbers on map correspond to numbers on list
         ** X on map is your current location
-
+        <BarProfile />
       </div>
     )
   }
