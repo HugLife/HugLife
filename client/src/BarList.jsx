@@ -52,7 +52,7 @@ class BarList extends Component {
    
         var map = new google.maps.Map(document.getElementById('map'), {
           center: pos,
-          zoom: 10
+          zoom: 15
         });
 
         var service = new google.maps.places.PlacesService(map);
@@ -186,6 +186,27 @@ class BarList extends Component {
   search() {
     var context = this;
     var address = this.state.value;
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.7876, lng: -122.4001},
+          zoom: 15
+        });
+
+    var geocoder = new google.maps.Geocoder;
+
+    geocoder.geocode({address: address}, function(results, status) {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        })
+      } else {
+        console.log('not successful: ' + status)
+      }
+    })
+
+
 
     
   }
