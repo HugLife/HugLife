@@ -27,7 +27,7 @@ class BarList extends Component {
     this.state = {
       page: 'home',
       value: 'Enter Bar',
-      bars: [{name: 'Tempest', key: 1}, {name: 'Databases', key: 2}, {name: 'Ol\'McDonalds', key: 3}],
+      bars: [{name: 'Please Wait for Geolocation to set in....', key: 1}],
       currentBar: [{name:'Tempest', key: 1}]
     }
   }
@@ -169,11 +169,19 @@ class BarList extends Component {
 
   }
 
+
+  //* Does not represent intetntion of Application refactor
+  selectBar() {
+    $('#barlistpage').hide();
+    $('#barprofilepage').show();
+  }
+
   //OnClick of a bar, the bar profile component should re render to show the information the bar that was clicked
+
   render() {
 
     return (
-      <div className='container'>
+      <div className='container' id="barlistpage">
         <Header />
         <div className='jumbotron'>
           <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
@@ -182,7 +190,7 @@ class BarList extends Component {
         <div className='jumbotron'>
           <h4>Bars Near You</h4>
           <ol>
-            {this.state.bars.map(bar => <li key={bar.id} bar={bar}>{bar.name}</li>)}
+            {this.state.bars.map(bar => <li onClick={this.selectBar} key={bar.id}>{bar.name}</li>)}
           </ol>
           </div>
         <div style={mapStyle} id="map">
