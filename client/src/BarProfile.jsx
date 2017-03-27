@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import BartenderListItem from './BartenderListItem.jsx';
 import Header from './Header.jsx';
+import BartenderProfile from './BartenderProfile.jsx';
 
-
+//Maybe the barprfile should be the first page, that way clicking on
+//an element of the barlist could bubble up to the bar profile and change it
 class BarProfile extends Component {
   constructor(props) {
     super(props)
@@ -88,6 +90,8 @@ class BarProfile extends Component {
     })
   }
 
+  //Should query the database to find bartenders associated with the bar and map them
+
   render() {
 
     return (
@@ -103,6 +107,7 @@ class BarProfile extends Component {
         <h2>Our Bartenders</h2>
         <div id="bartenders" className='jumbotron'>
           {this.state.bartenders.map(bartender => <BartenderListItem calcRating={this.calculateRating} bartender={bartender} />)}
+        <BartenderProfile />
         </div>
       </div>
 

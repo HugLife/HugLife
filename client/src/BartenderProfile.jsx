@@ -66,7 +66,8 @@ class BartenderProfile extends Component {
   componentDidMount() { 
     
   }
-
+  
+  //Should post to the databsae when the rating is done
   render() {
 
     return (
