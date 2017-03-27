@@ -9,6 +9,10 @@ var PORT = process.env.PORT || 5000;
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
+app.get('/', function(req, res, next){
+  res.sendStatus(200);
+});
+
 
 //will get the first three bars on the database
 app.get('/barlist', function (req, res) {
