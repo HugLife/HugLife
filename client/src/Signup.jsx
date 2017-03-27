@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import $ from 'jquery';
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,27 +27,21 @@ class Login extends React.Component {
     console.log('clicked');
     $('#loginpage').hide();
     $('#barlistpage').show();
-  }
-
-  signup () {
-    $('#loginpage').hide();
-    $('#signuppage').show();
+    $('#signuppage').hide();
   }
 
   render() {
-    return (<div className='page-header' id='loginpage'>
+    return (<div className='page-header' id='signuppage'>
       <Header />
       <h1>Welcome!</h1>
-      <p>Welcome to Drink'd, you can view and rate bartenders in you area! Please sign in/sign up below!</p>
+      <p>Please Sign Up Below! We hope you Enjoy</p>
       <h4>Username:</h4>
       <input value={this.state.user} onChange={this.userOnChange.bind(this)}/>  
       <h4>Password:</h4>
       <input value={this.state.password} onChange={this.passwordOnChange.bind(this)}/>   
-      <button onClick={this.loginToApp} className='btn btn-warning'> Sign in </button>
-
-      <p onClick={this.signup}>Sign up for our awesome app here</p>
+      <button onClick={this.loginToApp} className='btn btn-warning'> Sign up </button>
     </div>) 
   }
 }
 
-export default Login;
+export default Signup;

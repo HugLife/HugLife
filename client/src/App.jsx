@@ -4,7 +4,9 @@ import BarProfile from './BarProfile.jsx';
 import Header from './Header.jsx';
 import BartenderProfile from './BartenderProfile.jsx';
 import BarList from './BarList.jsx';
-import Login from './Login.jsx'
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+
 const divStyle = {
   display: 'inline-block',
   float: 'right',
@@ -34,6 +36,7 @@ class App extends Component {
 
     $('#rater').hide();
     $('#ratingconf').hide();
+    $('#signuppage').hide();
 
     //* Does not represent intetntion of Application refactor
     $('#barprofilepage').hide();
@@ -45,6 +48,7 @@ class App extends Component {
     return (
       <div>
         <Login />
+        <Signup />
         <BarList />
          <BarProfile />
          <BartenderProfile />

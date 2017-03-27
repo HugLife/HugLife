@@ -22,9 +22,9 @@ class RateBartender extends Component {
       quick_left: 0,
       hot: false,
       hook: false,
-      expertSelect: 'Please click BOO or AWESOME to rate this Metric',
-      friendlySelect: 'Please click BOO or AWESOME to rate this Metric',
-      quickSelect: 'Please click BOO or AWESOME to rate this Metric',
+      expertSelect: 'Please click 👎 or 👍 to rate this Metric',
+      friendlySelect: 'Please click 👎 or 👍 to rate this Metric',
+      quickSelect: 'Please click 👎 or 👍 to rate this Metric',
 
     }
   }
@@ -39,9 +39,9 @@ class RateBartender extends Component {
     $('#expert').show();
 
     this.setState({
-      expertSelect: 'Please click BOO or AWESOME to rate this Metric',
-      friendlySelect: 'Please click BOO or AWESOME to rate this Metric',
-      quickSelect: 'Please click BOO or AWESOME to rate this Metric',
+      expertSelect: 'Please click 👎 or 👍 to rate this Metric',
+      friendlySelect: 'Please click 👎 or 👍 to rate this Metric',
+      quickSelect: 'Please click 👎 or 👍 to rate this Metric',
     });
 
     console.log(context.state);
