@@ -10,7 +10,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/server.js",
-    "start": "webpack && nodemon server/server.js"
+    "start": "webpack && node server/server.js"
   },
   "dependencies": {
     "body-parser": "1.17.1",
