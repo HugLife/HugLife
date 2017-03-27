@@ -4,7 +4,7 @@ import Header from './Header.jsx';
 import Legend from './Legend.jsx';
 import Message from './Message.jsx';
 import RateBartender from './RateBartender.jsx';
-
+import ReviewList from './ReviewList.jsx';
 
 
 
@@ -101,10 +101,10 @@ class BartenderProfile extends Component {
         <button id="ratebutton" className='btn btn-info btn-lg' onClick={this.openRater}>CLICK TO RATE</button>
         <h4 id="ratingconf">Thanks for rating!</h4>
         <RateBartender bartender={this.state.bartender} />
-        <Legend/ >
+        <Legend />
         <h3>Reviews</h3>
         <div className='jumbotron'>
-          <p>FEATURE UNDER CONSTRUCTION; Check Back later!</p>
+          <ReviewList />
         </div>
 
       </div>
