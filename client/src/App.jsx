@@ -4,6 +4,7 @@ import BarProfile from './BarProfile.jsx';
 import Header from './Header.jsx';
 import BartenderProfile from './BartenderProfile.jsx';
 import BarList from './BarList.jsx';
+import Login from './Login.jsx'
 const divStyle = {
   display: 'inline-block',
   float: 'right',
@@ -42,9 +43,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Login />
         <BarList />
-        <BarProfile />
-        <BartenderProfile />
+         <BarProfile />
+         <BartenderProfile />
       </div>
     )
   }

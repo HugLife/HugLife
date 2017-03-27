@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import BartenderListItem from './BartenderListItem.jsx';
 import Header from './Header.jsx';
+import BartenderProfile from './BartenderProfile.jsx';
 
-
+//Maybe the barprfile should be the first page, that way clicking on
+//an element of the barlist could bubble up to the bar profile and change it
 class BarProfile extends Component {
   constructor(props) {
     super(props)
@@ -88,6 +90,7 @@ class BarProfile extends Component {
     })
   }
 
+
   //* Does not represent intetntion of Application refactor
   selectBartender() {
     $('#barprofilepage').hide();
@@ -98,6 +101,8 @@ class BarProfile extends Component {
     $('#barprofilepage').hide();
     $('#barlistpage').show();
   }
+
+  //Should query the database to find bartenders associated with the bar and map them
 
   render() {
 
@@ -114,7 +119,9 @@ class BarProfile extends Component {
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders" className='jumbotron'>
+          
           {this.state.bartenders.map(bartender => <BartenderListItem onClick={this.selectBartender} calcRating={this.calculateRating} bartender={bartender} />)}
+
         </div>
       </div>
 

@@ -71,6 +71,7 @@ class BartenderProfile extends Component {
     $('#bartenderprofilepage').hide();
   }
 
+  //Should post to the databsae when the rating is done
   render() {
 
     return (
@@ -100,7 +101,7 @@ class BartenderProfile extends Component {
       </div>
 
 
-      
+    
     )
   }
 }

@@ -169,11 +169,14 @@ class BarList extends Component {
 
   }
 
+
   //* Does not represent intetntion of Application refactor
   selectBar() {
     $('#barlistpage').hide();
     $('#barprofilepage').show();
   }
+
+  //OnClick of a bar, the bar profile component should re render to show the information the bar that was clicked
 
   render() {
 
@@ -194,7 +197,7 @@ class BarList extends Component {
         </div>
         * Numbers on map correspond to numbers on list
         ** X on map is your current location
-
+        <BarProfile />
       </div>
     )
   }
