@@ -129,6 +129,9 @@ class BarList extends Component {
         }, function(results, status, pagination) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               console.log('error')
+              context.setState({
+                bars: [{name: 'SORRY NO BARS HERE', id: 1}]
+              });
               return;
             } else {
 
@@ -163,6 +166,9 @@ class BarList extends Component {
       })
     } else {
       // do nothing
+      context.setState({
+         bars: [{name: 'GEOLOCATION DOESNT WORK', id: 1}]
+      });
     }
 
 
@@ -213,6 +219,10 @@ class BarList extends Component {
         }, function(results, status, pagination) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               console.log('error')
+              /// do doemthign eslse
+              context.setState({
+                bars: [{name: 'SORRY NO BARS HERE', id: 1}]
+              });
               return;
             } else {
 
