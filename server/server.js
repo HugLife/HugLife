@@ -9,8 +9,8 @@ var PORT = process.env.PORT || 5000;
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res, next){
-  res.sendStatus(200);
+app.get('/', function(req, res){
+  res.send('Why you no want our App');
 });
 
 

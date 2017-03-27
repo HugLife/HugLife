@@ -29,6 +29,11 @@ class Login extends React.Component {
     $('#barlistpage').show();
   }
 
+  signup () {
+    $('#loginpage').hide();
+    $('#signuppage').show();
+  }
+
   render() {
     return (<div className='page-header' id='loginpage'>
       <Header />
@@ -40,7 +45,7 @@ class Login extends React.Component {
       <input value={this.state.password} onChange={this.passwordOnChange.bind(this)}/>   
       <button onClick={this.loginToApp} className='btn btn-warning'> Sign in </button>
 
-      <p>Sign up for our awesome app here</p>
+      <p onClick={this.signup}>Sign up for our awesome app here</p>
     </div>) 
   }
 }
