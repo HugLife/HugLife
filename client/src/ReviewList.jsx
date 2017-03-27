@@ -24,7 +24,7 @@ class ReviewList extends Component {
   addReview () {
   	var nReviews = this.state.reviews.slice(0)
   	nReviews.push(this.state.review)
-  	this.setState({reviews: nReviews})
+  	this.setState({reviews: nReviews});
   	$('#review-input').val('');
   }
 
