@@ -222,7 +222,7 @@ class BarList extends Component {
               position: place.geometry.location,
               label: '' + (i + 1)
             });
-            }
+            } 
               console.log(results);
               context.setState({
                 bars: results
