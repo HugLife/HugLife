@@ -35,6 +35,9 @@ class App extends Component {
     $('#rater').hide();
     $('#ratingconf').hide();
 
+    //* Does not represent intetntion of Application refactor
+    $('#barprofilepage').hide();
+    $('#bartenderprofilepage').hide();
   }
 
   render() {

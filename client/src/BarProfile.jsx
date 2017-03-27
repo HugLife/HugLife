@@ -12,11 +12,11 @@ class BarProfile extends Component {
     this.state = {
       bar: {
         id: 1,
-        name: "Inner Fog",
-        opening_hours: {open_now: true},
+        name: "Mikkeller Bar",
+        opening_hours: {open_now: false},
         price_level: 2,
-        rating: 4.4,
-        vicinity: "545 Irving Street, San Francisco"
+        rating: 4.5,
+        vicinity: "34 Mason Street, San Francisco"
       },
       bartenders: [{name: 'Todd'}, {name: 'Sam'}, {name: 'Ryan'}, {name: 'Greg'}, {name: 'Not Martin'},]
     }
@@ -90,13 +90,26 @@ class BarProfile extends Component {
     })
   }
 
+
+  //* Does not represent intetntion of Application refactor
+  selectBartender() {
+    $('#barprofilepage').hide();
+    $('#bartenderprofilepage').show();
+  }
+
+  goToBarList (){
+    $('#barprofilepage').hide();
+    $('#barlistpage').show();
+  }
+
   //Should query the database to find bartenders associated with the bar and map them
 
   render() {
 
     return (
-      <div className='container'>
+      <div className='container' id="barprofilepage" onClick={this.selectBartender}>
         <Header />
+        <button onClick={this.goToBarList} className='btn btn-info btn-lg'>GO BACK TO BAR LIST PAGE</button>
         <h1>{this.state.bar.name}</h1>
         <div id="barinfo" className='jumbrotron'>
           <p><strong>Open Now:</strong> {this.renderOpen(this.state.bar.opening_hours.open_now)}</p>
@@ -106,8 +119,9 @@ class BarProfile extends Component {
         </div>
         <h2>Our Bartenders</h2>
         <div id="bartenders" className='jumbotron'>
-          {this.state.bartenders.map(bartender => <BartenderListItem calcRating={this.calculateRating} bartender={bartender} />)}
-        <BartenderProfile />
+          
+          {this.state.bartenders.map(bartender => <BartenderListItem onClick={this.selectBartender} calcRating={this.calculateRating} bartender={bartender} />)}
+
         </div>
       </div>
 
